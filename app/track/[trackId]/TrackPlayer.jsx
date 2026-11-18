@@ -49,6 +49,23 @@ function TrackPlayer({ trackId }) {
   const [unavailable, setUnavailable] = useState(false)
   const [lyricsOpen, setLyricsOpen] = useState(false)
 
+  // The component is *meant* to remount fresh per track (it's keyed by
+  // trackId one level up), but Next's client-navigation model doesn't
+  // always tear the instance down — sometimes new props just flow into the
+  // same instance. Reset playback state during render (React's documented
+  // pattern for "adjust state when a prop changes") whenever trackId
+  // doesn't match what we last rendered for, so the UI can never show a
+  // stale position/duration from the previous song either way.
+  const [renderedTrackId, setRenderedTrackId] = useState(trackId)
+  if (trackId !== renderedTrackId) {
+    setRenderedTrackId(trackId)
+    setIsPlaying(false)
+    setIsLoading(false)
+    setProgress(0)
+    setDuration(0)
+    setUnavailable(false)
+  }
+
   useEffect(() => {
     const audio = audioRef.current
 
@@ -74,13 +91,15 @@ function TrackPlayer({ trackId }) {
     }
 
     return () => {
-      // Switching tracks remounts this component (it's keyed by trackId), so
-      // the old <audio> element gets removed from the DOM — but on mobile
-      // Safari that alone doesn't reliably stop playback or hand off the
-      // lock-screen "Now Playing" session, so pause it explicitly first.
+      // Whether this is a real unmount (track change remounted the
+      // component) or just a prop update ahead of the next track's effect
+      // run, the previous track's audio should never keep playing — on
+      // mobile Safari in particular, removing the element alone doesn't
+      // reliably stop playback or hand off the lock-screen "Now Playing"
+      // session, so pause it explicitly.
       audio?.pause()
     }
-  }, [])
+  }, [trackId])
 
   useEffect(() => {
     if (!lyricsOpen) return

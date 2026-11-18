@@ -3,9 +3,7 @@ import "./globals.css";
 
 const title = "that's life";
 const description = "Brandon Paul — that's life";
-// NOTE: update this to the real production domain once deployed, so
-// og:image/twitter:image resolve to an absolute URL crawlers can fetch.
-const siteUrl = "https://music-app.vercel.app";
+const siteUrl = "https://music-app-beige-six.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
