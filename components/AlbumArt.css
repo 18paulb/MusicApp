@@ -1,0 +1,32 @@
+.album-art {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+  background: #000;
+}
+
+.album-art__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.album-art--sm {
+  width: 52px;
+  height: 52px;
+}
+
+.album-art--md {
+  width: 88px;
+  height: 88px;
+}
+
+.album-art--lg {
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 420px;
+  border-radius: 14px;
+}

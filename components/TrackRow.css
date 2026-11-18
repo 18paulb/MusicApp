@@ -1,0 +1,53 @@
+.track-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.track-row:hover,
+.track-row:focus-visible {
+  background: var(--row-hover);
+}
+
+.track-row:active {
+  background: var(--row-active);
+}
+
+.track-row__index {
+  width: 20px;
+  flex-shrink: 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+}
+
+.track-row__title {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 16px;
+  color: var(--text-h);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-row__duration {
+  font-size: 14px;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.track-row__chevron {
+  width: 18px;
+  height: 18px;
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
