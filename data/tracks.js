@@ -255,8 +255,8 @@ export const tracks = [
   },
   {
     id: 6,
-    title: "what's next",
-    src: 'track-6.mp3',
+    title: "chances",
+    src: 'chances.mp3',
     lyrics: placeholderLyrics,
     about: placeholderAbout,
   },
