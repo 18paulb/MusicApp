@@ -219,6 +219,13 @@ export const tracks = [
   },
   {
     id: 5,
+    title: "chances",
+    src: 'chances.mp3',
+    lyrics: placeholderLyrics,
+    about: placeholderAbout,
+  },
+  {
+    id: 6,
     title: 'masks',
     src: 'masks.mp3',
     images: ['/images/masks.jpeg'],
@@ -254,19 +261,12 @@ export const tracks = [
     I intentionally left a mistake in the piano part (<timestamp>1:36</timestamp>) because, in a world where AI is a thing, I think the little mistakes keep things human. Also, I was too lazy to rerecord the part.`
   },
   {
-    id: 6,
-    title: "chances",
-    src: 'chances.mp3',
-    lyrics: placeholderLyrics,
-    about: placeholderAbout,
-  },
-  {
     id: 7,
     title: "that's life",
     src: 'thats_life.mp3',
     images: ['/images/thats_life.jpeg'],
-    lyrics: 
-    `
+    lyrics:
+      `
     That's life
     That’s life
     That’s life
