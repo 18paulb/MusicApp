@@ -69,13 +69,27 @@ function TrackPlayer({ trackId }) {
   useEffect(() => {
     const audio = audioRef.current
 
-    // If the browser already has this file cached (e.g. revisiting a track),
-    // 'loadedmetadata' can fire before this effect/the onLoadedMetadata prop
-    // even attaches, so the event is missed and duration gets stuck at 0
-    // (scrubber stuck disabled). Catch up here in case metadata is already in.
-    if (audio && Number.isFinite(audio.duration) && audio.duration > 0) {
-      setDuration(audio.duration)
-    }
+    // Browser back/forward restores this instance's state on purpose (React
+    // Activity preserves it across back/forward navigations by design) —
+    // that restore skips the render-time reset above entirely, since it's
+    // not a normal render pass with new props, just a previously-rendered
+    // tree becoming visible again. Effects, though, do re-run on that
+    // transition, so this is the one hook guaranteed to fire every time this
+    // track becomes the active one again, including via the back button —
+    // reset here too, or a revisit via back/forward keeps showing wherever
+    // playback last was instead of starting fresh.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsPlaying(false)
+    setIsLoading(false)
+    setProgress(0)
+    setUnavailable(false)
+    setDuration(audio && Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration : 0)
+
+    // Match the native element to the reset above — if this is the same
+    // preserved <audio> node rather than a fresh one, its real currentTime
+    // is still wherever it was left, and the next timeupdate tick would
+    // otherwise immediately overwrite the progress reset above with it.
+    if (audio) audio.currentTime = 0
 
     // react-router's navigate(..., { state }) has no Next.js equivalent, so
     // the "should autoplay" flag travels as a ?autoplay=1 query param instead
