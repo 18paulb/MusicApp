@@ -288,6 +288,12 @@ function TrackPlayer({ trackId }) {
           </p>
 
           <audio
+            // Keyed by the track's own audio source: if Next ever updates
+            // this component in place instead of remounting it on
+            // navigation (see the renderedTrackId check above), this still
+            // guarantees a genuinely fresh <audio> element — and therefore
+            // currentTime back at 0 — whenever the track actually changes.
+            key={track.src}
             ref={audioRef}
             src={`/api/audio/${track.src}`}
             preload="metadata"

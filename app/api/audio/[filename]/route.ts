@@ -5,7 +5,12 @@ import { tracks } from '../../../../data/tracks.js'
 
 const BUCKET = process.env.S3_BUCKET_NAME
 const REGION = process.env.AWS_REGION
-const EXPIRES_IN_SECONDS = 300
+// Once the browser follows the redirect, further range requests (buffering,
+// seeking) go straight to this resolved S3 URL, not back through this route
+// — so if it expires mid-session, playback just stalls/errors with no way
+// to recover without a full reload. An hour comfortably covers a long
+// listening session while still not leaking a permanent link to the file.
+const EXPIRES_IN_SECONDS = 3600
 
 const s3 = new S3Client({ region: REGION })
 
