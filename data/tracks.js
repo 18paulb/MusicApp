@@ -221,8 +221,36 @@ export const tracks = [
     id: 5,
     title: "chances",
     src: 'chances.mp3',
-    lyrics: placeholderLyrics,
-    about: placeholderAbout,
+    lyrics: 
+   `Chances
+    Chances
+    Chances
+    Chances
+
+    I’m seeing (chances)
+    I’m making (chances)
+    So tired of (chances)
+    Taking all these (chances)
+
+    Maybe next time (chances)
+    It’ll pay out (chances)
+    Can’t stop now (chances)
+    Just one more
+
+    I’m seeing (chances)
+    I’m making (chances)
+    So tired of (chances)
+    Taking all these (chances)
+
+    Maybe next time (chances)
+    It’ll pay out (chances)
+    Can’t stop now (chances)
+    Just one more`,
+    about: 
+    `
+    I don't have a lot to say about this song. It was the last one I wrote and honestly I was going to cut it just because I didn't think it was needed. But I told myself I would write seven songs for this album and so I decided to keep it.
+    I tried to make this the most outside of my comfort zone in terms of style, it's pretty simple but it was mostly me messing around trying to center the song around a driving central bass line.
+    `,
   },
   {
     id: 6,
