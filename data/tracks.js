@@ -247,8 +247,7 @@ export const tracks = [
     Can’t stop now (chances)
     Just one more`,
     about: 
-    `
-    I don't have a lot to say about this song. It was the last one I wrote and honestly I was going to cut it just because I didn't think it was needed. But I told myself I would write seven songs for this album and so I decided to keep it.
+    `I don't have a lot to say about this song. It was the last one I wrote and honestly I was going to cut it just because I didn't think it was needed. But I told myself I would write seven songs for this album and so I decided to keep it.
     I tried to make this the most outside of my comfort zone in terms of style, it's pretty simple but it was mostly me messing around trying to center the song around a driving central bass line.
     `,
   },
